@@ -11,7 +11,7 @@ Translated algorithms:
 
 ## Samples
 
-The first sample creates a 10x10 maze with the *Aldous Broder* algorithm and print the result to the output:
+The first sample creates a 10x10 maze with the [Aldous Broder Algorithm](http://weblog.jamisbuck.org/2011/1/17/maze-generation-aldous-broder-algorithm) and print out the result:
 
 ``` go
 package main
