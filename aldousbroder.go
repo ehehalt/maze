@@ -1,7 +1,6 @@
 package maze
 
 import (
-	"fmt"
 	"math/rand"
 	"time"
 )
@@ -18,12 +17,13 @@ func AldousBroder(g Grid) *Grid {
 	for unvisited > 0 { // && step < 10 {
 		nbs := c.Neighbors()
 		rnd := rand.Intn(len(nbs))
-		tmp := fmt.Sprintf("rand[0-%d]=%d", len(nbs), rnd)
-		fmt.Print(tmp)
+
+		// tmp := fmt.Sprintf("rand[0-%d]=%d", len(nbs), rnd)
+		// fmt.Print(tmp)
 
 		nb := nbs[rnd]
 
-		fmt.Println(":", c.ToString(), " => ", nb.ToString())
+		// fmt.Println(":", c.ToString(), " => ", nb.ToString())
 
 		if len(nb.Links()) == 0 {
 			c.Link(nb)
