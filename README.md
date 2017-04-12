@@ -11,7 +11,7 @@ Translated algorithms:
 
 ## Samples
 
-Create a 10x10 algorithm with Aldous Broder as ASCII output for example:
+The first sample creates a 10x10 maze with the *Aldous Broder* algorithm and print the result to the output:
 
 ``` go
 package main
@@ -25,9 +25,7 @@ import (
 func main() {
 	g := maze.NewGrid(10, 10)
 	g = maze.AldousBroder(*g)
-
 	ascii := g.ToString()
-
 	fmt.Println(ascii)
 }
 ```
