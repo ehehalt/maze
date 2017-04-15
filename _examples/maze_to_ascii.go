@@ -11,8 +11,9 @@ func main() {
 
 	// g = maze.BinaryTree(*g)
 	// g = maze.Sidewinder(*g)
-	g = maze.AldousBroder(*g)
+	// g = maze.AldousBroder(*g)
 	// g = maze.Wilson(*g)
+	g = maze.HuntAndKill(*g)
 
 	ascii := g.ToString()
 

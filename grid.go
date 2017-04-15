@@ -84,6 +84,11 @@ func (g *Grid) EachCell() CellSlice {
 	return cells
 }
 
+// Sample returns a random Cell from a grid
+func (g *Grid) Sample() *Cell {
+	return g.EachCell().Sample()
+}
+
 func (g *Grid) contentsOf(cell *Cell) string {
 	return " "
 }

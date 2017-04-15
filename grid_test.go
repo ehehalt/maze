@@ -122,3 +122,11 @@ func TestToString(t *testing.T) {
 		t.Errorf("g.ToString() result ist wrong!")
 	}
 }
+
+func TestSample(t *testing.T) {
+	g := NewGrid(2, 4)
+	c := g.Sample()
+	if c == nil {
+		t.Errorf("Col c should not be nil")
+	}
+}
