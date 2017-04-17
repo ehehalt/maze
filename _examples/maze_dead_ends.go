@@ -6,8 +6,6 @@ import (
 	"github.com/ehehalt/maze"
 )
 
-type Generator func(maze.Grid) *maze.Grid
-
 var (
 	names = []string{
 		"BinaryTree",
@@ -17,7 +15,7 @@ var (
 		"HuntAndKill",
 	}
 
-	algorithms = []Generator{
+	algorithms = []maze.Generator{
 		maze.BinaryTree,
 		maze.Sidewinder,
 		maze.AldousBroder,

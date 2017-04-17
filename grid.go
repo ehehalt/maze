@@ -18,6 +18,8 @@ type Grid struct {
 	Paths         *Dist
 }
 
+type Generator func(Grid) *Grid
+
 // prepareGrid creates the multidimensional Cell slice
 func (g *Grid) prepareCells() {
 	g.Cells = make([][]*Cell, g.Rows)
