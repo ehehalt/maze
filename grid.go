@@ -102,6 +102,11 @@ func (g *Grid) contentsOfDistance(cell *Cell) string {
 	return " "
 }
 
+// DeadEnds ...
+func (g *Grid) DeadEnds() CellSlice {
+	return g.EachCell().DeadEnds()
+}
+
 // ToString()  ...
 func (g *Grid) ToString() string {
 	output := "+" + strings.Repeat("---+", g.Columns) + "\n"

@@ -50,3 +50,13 @@ func (cs CellSlice) Index(cell *Cell) int {
 	}
 	return -1
 }
+
+func (cs CellSlice) DeadEnds() CellSlice {
+	de := CellSlice{}
+	for _, current := range cs {
+		if len(current.links) == 1 {
+			de = append(de, current)
+		}
+	}
+	return de
+}

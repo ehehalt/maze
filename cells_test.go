@@ -75,3 +75,20 @@ func TestIndex(t *testing.T) {
 		t.Error("Index shold be -1")
 	}
 }
+
+func TestCellSliceDeadEnds(t *testing.T) {
+	cs, _ := createCells()
+	if len(cs.DeadEnds()) != 0 {
+		t.Error("There should be 0 dead ends.")
+	}
+
+	c0 := cs[0]
+	c1 := cs[1]
+
+	c0.Link(c1)
+
+	if len(cs.DeadEnds()) != 2 {
+		t.Error("There should be 2 dead ends.")
+	}
+
+}

@@ -130,3 +130,19 @@ func TestSample(t *testing.T) {
 		t.Errorf("Col c should not be nil")
 	}
 }
+
+func TestGridDeadEnds(t *testing.T) {
+	g := NewGrid(2, 4)
+	if len(g.DeadEnds()) != 0 {
+		t.Errorf("There should be 0 dead ends!")
+	}
+
+	c1 := g.CellAt(0, 0)
+	c2 := g.CellAt(0, 1)
+
+	c1.Link(c2)
+
+	if len(g.DeadEnds()) != 2 {
+		t.Errorf("There should be 2 dead ends!")
+	}
+}
