@@ -1,12 +1,42 @@
 package main
 
-import "github.com/ehehalt/maze"
+import (
+	"fmt"
+
+	"github.com/ehehalt/maze"
+)
+
+type Generator func(maze.Grid) *maze.Grid
+
+var (
+	names = []string{
+		"BinaryTree",
+		"Sidewinder",
+		"AldousBroder",
+		"Wilson",
+		"HuntAndKill",
+	}
+
+	algorithms = []Generator{
+		maze.BinaryTree,
+		maze.Sidewinder,
+		maze.AldousBroder,
+		maze.Wilson,
+		maze.HuntAndKill,
+	}
+)
 
 func main() {
-	g := maze.NewGrid(10, 10)
-	g = maze.BinaryTree(*g)
-	g = maze.Sidewinder(*g)
-	g = maze.AldousBroder(*g)
-	g = maze.Wilson(*g)
-	g = maze.HuntAndKill(*g)
+
+	for idx, _ := range names {
+
+		name := names[idx]
+		algorithm := algorithms[idx]
+
+		source := maze.NewGrid(10, 10)
+		destination := algorithm(*source)
+
+		fmt.Printf("%20s: DeadEnds = %d\n", name, len(destination.DeadEnds()))
+	}
+
 }
