@@ -13,7 +13,7 @@ func init() {
 func RecursiveBacktracker(g Grid) *Grid {
 	stack := CellSlice{g.Sample()}
 
-	for false && stack.Any() {
+	for stack.Any() {
 		current := stack.Last()
 
 		neighbors := CellSlice{}

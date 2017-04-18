@@ -1,9 +1,6 @@
 package maze
 
-import (
-	"fmt"
-	"testing"
-)
+import "testing"
 
 // setup ...
 func createCells() (CellSlice, *Cell) {
@@ -123,10 +120,7 @@ func TestCellSlicePop(t *testing.T) {
 	if len(cs) != 2 {
 		t.Error("The cell slice has to be 2 element of size")
 	}
-	fmt.Println(cs)
-	fmt.Println(cs[:len(cs)-1])
 	_, cs = cs.Pop()
-	fmt.Println(cs)
 	if len(cs) != 1 {
 		t.Error("The cell slice should be a size of 1 element")
 	}

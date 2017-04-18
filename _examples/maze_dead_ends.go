@@ -14,6 +14,7 @@ var (
 		"AldousBroder",
 		"Wilson",
 		"HuntAndKill",
+		"RecursiveBacktracker",
 	}
 
 	algorithms = []maze.Generator{
@@ -22,6 +23,7 @@ var (
 		maze.AldousBroder,
 		maze.Wilson,
 		maze.HuntAndKill,
+		maze.RecursiveBacktracker,
 	}
 
 	tries = 100
