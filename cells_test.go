@@ -90,5 +90,35 @@ func TestCellSliceDeadEnds(t *testing.T) {
 	if len(cs.DeadEnds()) != 2 {
 		t.Error("There should be 2 dead ends.")
 	}
+}
 
+func TestCellSliceLast(t *testing.T) {
+	cs := CellSlice{NewCell(1, 1)}
+	cs = append(cs, NewCell(2, 2))
+	if cs.Last().Column != 2 {
+		t.Error("The column of the last element should be 2")
+	}
+	if cs.Last().Row != 2 {
+		t.Error("The row of the last element should be 2")
+	}
+}
+
+func TestCellSliceEmpty(t *testing.T) {
+	cs := CellSlice{}
+	if !cs.Empty() {
+		t.Error("The cell slice has to be empty")
+	}
+
+	cs = append(cs, NewCell(1, 1))
+	if cs.Empty() {
+		t.Error("The cell slice should not empty")
+	}
+}
+
+func TestCellSlicePop(t *testing.T) {
+	cs, _ := createCells()
+	c := cs.Pop()
+	if len(cs) != 1 {
+		t.Error("The cell slice should be a size of 1 element")
+	}
 }

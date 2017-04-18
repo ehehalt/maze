@@ -41,6 +41,11 @@ func (cs CellSlice) Any() bool {
 	return len(cs) > 0
 }
 
+// Empty return true if the CellSlice is empty
+func (cs CellSlice) Empty() bool {
+	return len(cs) == 0
+}
+
 // Index returns the index of a Cell in a CellSlice or -1 if the CellSlice don't contains the Cell
 func (cs CellSlice) Index(cell *Cell) int {
 	for idx, current := range cs {
@@ -51,6 +56,18 @@ func (cs CellSlice) Index(cell *Cell) int {
 	return -1
 }
 
+// Last returns the last element in the cell slice
+func (cs CellSlice) Last() *Cell {
+	return cs[len(cs)-1]
+}
+
+// Pop removes the last element from the cell slice and returns it
+func (cs CellSlice) Pop() *Cell {
+	c, cs := cs[len(cs)-1], cs[:len(cs)-1]
+	return c
+}
+
+// DeadEnds returns the dead ends in the cell slice as its own cell slice
 func (cs CellSlice) DeadEnds() CellSlice {
 	de := CellSlice{}
 	for _, current := range cs {
