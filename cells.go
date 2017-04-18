@@ -62,9 +62,8 @@ func (cs CellSlice) Last() *Cell {
 }
 
 // Pop removes the last element from the cell slice and returns it
-func (cs CellSlice) Pop() *Cell {
-	c, cs := cs[len(cs)-1], cs[:len(cs)-1]
-	return c
+func (cs CellSlice) Pop() (*Cell, CellSlice) {
+	return cs[len(cs)-1], cs[:len(cs)-1]
 }
 
 // DeadEnds returns the dead ends in the cell slice as its own cell slice
