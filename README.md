@@ -7,6 +7,7 @@ Translated algorithms:
 - [Aldous Broder](http://weblog.jamisbuck.org/2011/1/17/maze-generation-aldous-broder-algorithm)
 - [Binary Tree](http://weblog.jamisbuck.org/2011/2/1/maze-generation-binary-tree-algorithm.html)
 - [Hunt and Kill](http://weblog.jamisbuck.org/2011/1/24/maze-generation-hunt-and-kill-algorithm.html)
+- [Recursive Backtracker](http://weblog.jamisbuck.org/2010/12/27/maze-generation-recursive-backtracking) in progress
 - [Sidewinder](http://weblog.jamisbuck.org/2011/2/3/maze-generation-sidewinder-algorithm.html)
 - [Wilson](http://weblog.jamisbuck.org/2011/1/20/maze-generation-wilson-s-algorithm.html)
 
