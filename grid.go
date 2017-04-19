@@ -141,25 +141,59 @@ func (g *Grid) ToString() string {
 }
 
 func (g *Grid) ToRunes() [][]rune {
-	cols := g.Columns*2 + 1
-	rows := g.Rows*2 + 1
+	rCols := g.Columns*2 + 1
+	rRows := g.Rows*2 + 1
 	wall := '*'
 	free := ' '
 
-	maze := make([][]rune, rows)
+	maze := make([][]rune, rRows)
 	for row := range maze {
-		maze[row] = make([]rune, cols)
-		for i := 0; i < cols; i++ {
+		maze[row] = make([]rune, rCols)
+		for i := 0; i < rCols; i++ {
 			switch i {
-			case 0, cols - 1:
+			case 0, rCols - 1:
 				maze[row][i] = wall
 			default:
-				if row == 0 || row == rows-1 {
+				if row == 0 || row == rRows-1 {
 					maze[row][i] = wall
 				} else {
 					maze[row][i] = free
 				}
 			}
+		}
+	}
+
+	for _, gRow := range g.Cells {
+		for _, cell := range gRow {
+			pRow := cell.Row*2 + 1
+			pCol := cell.Column*2 + 1
+
+			if cell.IsLinked(cell.East) {
+				fmt.Println(pRow, pCol, cell.Row, cell.Column, cell.East.Row, cell.East.Column)
+				maze[pRow][pCol+1] = free
+			} else {
+				maze[pRow][pCol+1] = wall
+			}
+
+			if cell.IsLinked(cell.West) {
+				maze[pRow][pCol-1] = free
+			} else {
+				maze[pRow][pCol-1] = wall
+			}
+
+			if cell.IsLinked(cell.North) {
+				maze[pRow-1][pCol] = free
+			} else {
+				maze[pRow-1][pCol] = wall
+			}
+
+			if cell.IsLinked(cell.South) {
+				maze[pRow+1][pCol] = free
+			} else {
+				maze[pRow+1][pCol] = wall
+			}
+
+			maze[pRow][pCol] = free
 		}
 	}
 
