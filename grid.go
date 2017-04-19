@@ -1,7 +1,6 @@
 package maze
 
 import (
-	"fmt"
 	"math/rand"
 	"strconv"
 	"strings"
@@ -145,6 +144,8 @@ func (g *Grid) ToRunes() [][]rune {
 	rRows := g.Rows*2 + 1
 	wall := '*'
 	free := ' '
+	strt := 'S'
+	ende := 'L'
 
 	maze := make([][]rune, rRows)
 	for row := range maze {
@@ -169,7 +170,6 @@ func (g *Grid) ToRunes() [][]rune {
 			pCol := cell.Column*2 + 1
 
 			if cell.IsLinked(cell.East) {
-				fmt.Println(pRow, pCol, cell.Row, cell.Column, cell.East.Row, cell.East.Column)
 				maze[pRow][pCol+1] = free
 			} else {
 				maze[pRow][pCol+1] = wall
@@ -193,34 +193,23 @@ func (g *Grid) ToRunes() [][]rune {
 				maze[pRow+1][pCol] = wall
 			}
 
+			maze[pRow-1][pCol-1] = wall
+			maze[pRow+1][pCol-1] = wall
 			maze[pRow][pCol] = free
 		}
 	}
 
-	for row := range maze {
-		for col := range maze[row] {
-			fmt.Print(string(maze[row][col]))
-		}
-		fmt.Println("")
-	}
+	maze[1][1] = strt
+	maze[rRows-2][rCols-2] = ende
 
 	/*
-
-		// maze to rune
-
-		maze[last.x][last.y] = 'L'
-		bordered := make([][]rune, len(maze)+2)
-		for r := range bordered {
-			bordered[r] = make([]rune, len(maze[0])+2)
-			for c := range bordered[r] {
-				if r == 0 || r == len(maze)+1 || c == 0 || c == len(maze[0])+1 {
-					bordered[r][c] = '*'
-				} else {
-					bordered[r][c] = maze[r-1][c-1]
-				}
+		for row := range maze {
+			for col := range maze[row] {
+				fmt.Print(string(maze[row][col]))
 			}
+			fmt.Println("")
 		}
-		return bordered
 	*/
+
 	return maze
 }
