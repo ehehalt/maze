@@ -1,6 +1,7 @@
 package maze
 
 import (
+	"fmt"
 	"math/rand"
 	"strconv"
 	"strings"
@@ -137,4 +138,55 @@ func (g *Grid) ToString() string {
 		output = output + bottom + "\n"
 	}
 	return output
+}
+
+func (g *Grid) ToRunes() [][]rune {
+	cols := g.Columns*2 + 1
+	rows := g.Rows*2 + 1
+	wall := '*'
+	free := ' '
+
+	maze := make([][]rune, rows)
+	for row := range maze {
+		maze[row] = make([]rune, cols)
+		for i := 0; i < cols; i++ {
+			switch i {
+			case 0, cols - 1:
+				maze[row][i] = wall
+			default:
+				if row == 0 || row == rows-1 {
+					maze[row][i] = wall
+				} else {
+					maze[row][i] = free
+				}
+			}
+		}
+	}
+
+	for row := range maze {
+		for col := range maze[row] {
+			fmt.Print(string(maze[row][col]))
+		}
+		fmt.Println("")
+	}
+
+	/*
+
+		// maze to rune
+
+		maze[last.x][last.y] = 'L'
+		bordered := make([][]rune, len(maze)+2)
+		for r := range bordered {
+			bordered[r] = make([]rune, len(maze[0])+2)
+			for c := range bordered[r] {
+				if r == 0 || r == len(maze)+1 || c == 0 || c == len(maze[0])+1 {
+					bordered[r][c] = '*'
+				} else {
+					bordered[r][c] = maze[r-1][c-1]
+				}
+			}
+		}
+		return bordered
+	*/
+	return maze
 }
