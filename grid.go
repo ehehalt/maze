@@ -7,6 +7,13 @@ import (
 	"time"
 )
 
+var (
+	runeWall  rune = '*'
+	runeFree  rune = ' '
+	runeStart rune = 'S'
+	runeEnd   rune = 'L'
+)
+
 func init() {
 	rand.Seed(time.Now().UnixNano())
 }
@@ -145,10 +152,10 @@ func (g *Grid) ToString() string {
 func (g *Grid) ToRunes() [][]rune {
 	rCols := g.Columns*2 + 1
 	rRows := g.Rows*2 + 1
-	wall := '*'
-	free := ' '
-	strt := 'S'
-	ende := 'L'
+	wall := runeWall
+	free := runeFree
+	strt := runeStart
+	ende := runeEnd
 
 	maze := make([][]rune, rRows)
 	for row := range maze {

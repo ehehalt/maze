@@ -130,26 +130,26 @@ func TestToRunes(t *testing.T) {
 		for runeIdx, rune := range line {
 
 			if lineIdx == 0 || lineIdx == 2 || lineIdx == 4 {
-				if rune != '*' {
-					t.Errorf("rune should be '*', found '%s' at (%d,%d)", string(rune), lineIdx, runeIdx)
+				if rune != runeWall {
+					t.Errorf("rune should be '%s', found '%s' at (%d,%d)", string(runeWall), string(rune), lineIdx, runeIdx)
 				}
 			} else {
 				if runeIdx == 0 || runeIdx == 2 || runeIdx == 4 {
-					if rune != '*' {
-						t.Errorf("rune should be '*', found '%s' at (%d,%d)", string(rune), lineIdx, runeIdx)
+					if rune != runeWall {
+						t.Errorf("rune should be '%s', found '%s' at (%d,%d)", string(runeWall), string(rune), lineIdx, runeIdx)
 					}
 				}
 			}
 
 			if lineIdx == 1 && runeIdx == 1 {
-				if rune != 'S' {
-					t.Errorf("rune should be 'S', found '%s' at (%d,%d)", string(rune), lineIdx, runeIdx)
+				if rune != runeStart {
+					t.Errorf("rune should be '%s', found '%s' at (%d,%d)", string(runeStart), string(rune), lineIdx, runeIdx)
 				}
 			}
 
 			if lineIdx == 3 && runeIdx == 3 {
-				if rune != 'L' {
-					t.Errorf("rune should be 'L', found '%s' at (%d,%d)", string(rune), lineIdx, runeIdx)
+				if rune != runeEnd {
+					t.Errorf("rune should be '%s', found '%s' at (%d,%d)", string(runeEnd), string(rune), lineIdx, runeIdx)
 				}
 			}
 		}
