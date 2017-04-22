@@ -104,12 +104,13 @@ func (g *Grid) contentsOfDistance(cell *Cell) string {
 	return " "
 }
 
-// DeadEnds ...
+// DeadEnds returns a slice with DeadEnd cells.
+// DeadEnd cells are cells with only one linked cell.
 func (g *Grid) DeadEnds() CellSlice {
 	return g.EachCell().DeadEnds()
 }
 
-// ToString()  ...
+// ToString returns the grid as string.
 func (g *Grid) ToString() string {
 	output := "+" + strings.Repeat("---+", g.Columns) + "\n"
 	for _, row := range g.Cells {
@@ -139,6 +140,8 @@ func (g *Grid) ToString() string {
 	return output
 }
 
+// ToRunes converts the grid into a 2-dimensional rune slice.
+// This is needed from the maze-box sample.
 func (g *Grid) ToRunes() [][]rune {
 	rCols := g.Columns*2 + 1
 	rRows := g.Rows*2 + 1
