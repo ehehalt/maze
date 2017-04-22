@@ -123,6 +123,39 @@ func TestToString(t *testing.T) {
 	}
 }
 
+func TestToRunes(t *testing.T) {
+	grid := NewGrid(2, 2)
+	runes := grid.ToRunes()
+	for lineIdx, line := range runes {
+		for runeIdx, rune := range line {
+
+			if lineIdx == 0 || lineIdx == 2 || lineIdx == 4 {
+				if rune != '*' {
+					t.Errorf("rune should be '*', found '%s' at (%d,%d)", string(rune), lineIdx, runeIdx)
+				}
+			} else {
+				if runeIdx == 0 || runeIdx == 2 || runeIdx == 4 {
+					if rune != '*' {
+						t.Errorf("rune should be '*', found '%s' at (%d,%d)", string(rune), lineIdx, runeIdx)
+					}
+				}
+			}
+
+			if lineIdx == 1 && runeIdx == 1 {
+				if rune != 'S' {
+					t.Errorf("rune should be 'S', found '%s' at (%d,%d)", string(rune), lineIdx, runeIdx)
+				}
+			}
+
+			if lineIdx == 3 && runeIdx == 3 {
+				if rune != 'L' {
+					t.Errorf("rune should be 'L', found '%s' at (%d,%d)", string(rune), lineIdx, runeIdx)
+				}
+			}
+		}
+	}
+}
+
 func TestSample(t *testing.T) {
 	g := NewGrid(2, 4)
 	c := g.Sample()
