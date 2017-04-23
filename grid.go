@@ -71,6 +71,7 @@ func (g *Grid) CellAt(row, col int) *Cell {
 }
 
 // RandomCell returns a random cell from the grid
+// Same as method Sample()?!
 func (g *Grid) RandomCell() *Cell {
 	row := rand.Intn(g.Rows)
 	col := rand.Intn(g.Columns)
@@ -94,6 +95,7 @@ func (g *Grid) EachCell() CellSlice {
 }
 
 // Sample returns a random Cell from a grid
+// Same as method RandomCell()?!
 func (g *Grid) Sample() *Cell {
 	return g.EachCell().Sample()
 }
