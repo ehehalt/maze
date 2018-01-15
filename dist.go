@@ -13,7 +13,7 @@ func NewDist(rootCell *Cell) *Dist {
 	return dist
 }
 
-// Max returs the longest path in the distances dictionary
+// Max returns the longest path in the distances dictionary
 func (d *Dist) Max() int {
 	max := 0
 	for _, v := range d.Cells {
